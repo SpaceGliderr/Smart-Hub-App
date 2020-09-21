@@ -48,7 +48,7 @@ export default function Home() {
       <h1 style={{ paddingLeft: "20px" }}>Welcome to Homiez</h1>
 
       <TestComponent />
-
+      <div>testing</div>
       {blogs.map(
         (blog) => (
           <p key={blog.id}>{blog.title}</p>
