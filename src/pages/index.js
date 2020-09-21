@@ -3,6 +3,7 @@ import Head from "next/head";
 import TestComponent from "../components/TestComponent";
 import { db } from "../config/firebase-config";
 import { getTestHook, getTestHooks } from "../api/queries/query";
+import mobile from "../../public/img/mobile.svg";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -44,6 +45,8 @@ export default function Home() {
       <Head>
         <title>Homiez App</title>
       </Head>
+
+      <img src={mobile} alt="mobile" />
 
       <h1 style={{ paddingLeft: "20px" }}>Welcome to Homiez</h1>
 
