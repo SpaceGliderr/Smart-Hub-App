@@ -17,7 +17,7 @@ const TestComponent = () => {
     setTitle("");
     setContent("");
 
-    setNotification("Created");
+    setNotification("Created Notification");
 
     setTimeout(() => {
       setNotification("");
@@ -29,7 +29,7 @@ const TestComponent = () => {
       <h2>Add Blog</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          Title
+          Testing Title
           <br />
           <input
             type="text"

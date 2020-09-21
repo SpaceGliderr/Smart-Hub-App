@@ -15,10 +15,10 @@ var firebaseConfig = {
 // Initialize Firebase - Firebase Analytics not needed at the moment
 try {
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  // firebase.analytics();
 } catch (err) {
   if (!/already exists/.test(err.message)) {
-    console.error("Firebase initialization error", err.stack);
+    console.error("Firebase initialization error: ", err.stack);
   }
 }
 
