@@ -25,7 +25,7 @@ const TestComponent = () => {
   };
 
   return (
-    <div style={{ paddingLeft: "20px" }}>
+    <div>
       <h2>Add Blog</h2>
       <form onSubmit={handleSubmit}>
         <div>
