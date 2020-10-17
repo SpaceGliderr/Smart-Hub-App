@@ -5,7 +5,7 @@ import { db } from "../config/firebase-config";
 import { getTestHook, getTestHooks } from "../api/queries/query";
 import mobile from "../../public/img/mobile.svg";
 
-export default function Home() {
+const Index = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -64,4 +64,6 @@ export default function Home() {
       )}
     </div>
   );
-}
+};
+
+export default Index;
