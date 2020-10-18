@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { fb } from "../../config/firebase-config";
 import { Form, Button, Message } from "react-bulma-components";
 import { useForm, Controller, ErrorMessage } from "react-hook-form";
-import { Container, Columns } from "react-bulma-components";
+import { Image } from "react-bulma-components";
+import SignInImage from "../../../public/img/sign-in.svg";
+import GoogleImage from "../../../public/img/google-icon.svg";
 import styles from "./styles";
 
 import validation from "./validation";
@@ -14,6 +16,7 @@ const { Field, Control, Input, Select, Label } = Form;
 const SignIn = (props) => {
   const { size } = props;
 
+  const currentDate = new Date();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [notification, setNotification] = useState("");
@@ -41,10 +44,12 @@ const SignIn = (props) => {
   };
 
   return (
-    <div className="homiez-signup">
+    <div className="homiez-signin">
+      <p className="is-size-3 title">Sign In</p>
+      <Image className="has-text-centered image-signin" src={SignInImage} />
       <form>
         <Field>
-          <Label>Email Address</Label>
+          <Label className="has-text-weight-medium">Email</Label>
           <Control>
             <Controller
               as={Input}
@@ -55,12 +60,12 @@ const SignIn = (props) => {
             />
           </Control>
           {/* <ErrorMessage errors={errors} name="email">
-                {({ message }) => <Help color="danger">{message}</Help>}
-            </ErrorMessage> */}
+                    {({ message }) => <Help color="danger">{message}</Help>}
+                </ErrorMessage> */}
         </Field>
 
         <Field>
-          <Label>Password</Label>
+          <Label className="has-text-weight-medium">Password</Label>
           <Control>
             <Controller
               as={Input}
@@ -72,9 +77,13 @@ const SignIn = (props) => {
             />
           </Control>
           {/* <ErrorMessage errors={errors} name="password">
-                {({ message }) => <Help color="danger">{message}</Help>}
-            </ErrorMessage> */}
+                            {({ message }) => <Help color="danger">{message}</Help>}
+                        </ErrorMessage> */}
         </Field>
+
+        <div className="has-text-right is-fullwidth forgot-password">
+          <a href="/">Forgot Password?</a>
+        </div>
 
         <Button
           // loading={submissionLoading}
@@ -83,20 +92,27 @@ const SignIn = (props) => {
           size={size}
           fullwidth
         >
-          Login
+          Log In
         </Button>
 
-        <Link href="/signin">
-          <a>Forgot Password?</a>
-        </Link>
+        <div className="divider">OR</div>
 
-        <div className="or">
-          <p className="has-text-centered has-text-grey-light">or</p>
+        <Button
+          // loading={submissionLoading}
+          className="is-outlined google-button"
+          type="submit"
+          size={size}
+          fullwidth
+        >
+          <Image className="has-text-centered google-icon" src={GoogleImage} />
+          Log In with Google
+        </Button>
+
+        <div className="has-text-centered is-fullwidth">
+          <p className="has-text-grey">
+            Don't have an account? <a href="/sign-up">Sign Up Now</a>
+          </p>
         </div>
-
-        <Link href="/SignUp">
-          <a className="has-text-danger">Don't have an account?</a>
-        </Link>
 
         {/* {errorMessage && (
           <Message color="danger">

@@ -1,27 +1,30 @@
 import css from "styled-jsx/css";
 
 export default css.global`
-  .or {
-    margin-top: -1.5em;
-  }
-  .forget-password {
-    margin-top: 2em;
-  }
-  .sign-up-message {
-    margin-top: 0.1em;
-  }
-  @media screen and (max-width: 800px) {
-    .sex {
-      padding-right: 0;
+    .homiez-signin {
+      margin-top: 1.5em;
     }
-    .password {
-      margin-bottom: 1rem;
+    .image-signin {
+      width: 400px;
+      height: 400px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .or {
-      margin-top: -0.5em;
+    .forgot-password {
+      margin-bottom: 0.5em;
     }
-    .columns:not(:last-child) {
-      margin-bottom: 0;
+    .divider {
+      margin: 1em 0;
     }
-  }
+    .google-button {
+      margin-bottom: 0.5em;
+    }
+    .google-icon {
+      margin-right: 0.5em;
+    }
+    @media screen and (max-width: 800px) {
+      .image-signin {
+      width: 248px;
+      height: 230px;
+    }
 `;
