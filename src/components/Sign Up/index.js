@@ -145,7 +145,7 @@ const SignUp = (props) => {
 
         <div className="has-text-centered is-fullwidth">
           <p className="has-text-grey">
-            Already have an account? <a href="/sign-in">Log In Now</a>
+            Already have an account? <a href="/sign-in">Sign In Now</a>
           </p>
         </div>
 
