@@ -5,9 +5,8 @@ import { fb } from "../../config/firebase-config";
 import { Form, Button, Message } from "react-bulma-components";
 import { useForm, Controller, ErrorMessage } from "react-hook-form";
 import { Image } from "react-bulma-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import SignUpImage from "../../../public/img/SignUp.svg";
+import SignUpImage from "../../../public/img/sign-up.svg";
+import GoogleImage from "../../../public/img/google-icon.svg";
 import styles from "./styles";
 
 import validation from "./validation";
@@ -46,13 +45,8 @@ const SignUp = (props) => {
 
   return (
     <div className="homiez-signup">
-      <p className="is-size-3 title">
-        Sign Up
-      </p>
-      <Image
-        className="has-text-centered image-signup"
-        src={SignUpImage}
-      />
+      <p className="is-size-3 title">Sign Up</p>
+      <Image className="has-text-centered image-signup" src={SignUpImage} />
       <form>
         <Field>
           <Label className="has-text-weight-medium">First Name</Label>
@@ -120,8 +114,9 @@ const SignUp = (props) => {
         </Field>
 
         <div className="is-fullwidth is-inline-flex t-and-c">
-          <p>By signing up, i have read and agree to the 
-            <a className="has-text-link">terms and conditions</a>
+          <p>
+            By signing up, i have read and agree to the
+            <a className="has-text-link"> terms and conditions</a>
           </p>
         </div>
 
@@ -134,9 +129,9 @@ const SignUp = (props) => {
         >
           Sign Up
         </Button>
-        
+
         <div className="divider">OR</div>
-        
+
         <Button
           // loading={submissionLoading}
           className="is-outlined google-button"
@@ -144,10 +139,10 @@ const SignUp = (props) => {
           size={size}
           fullwidth
         >
-          <FontAwesomeIcon icon={faGoogle} size="lg" className="google-icon"/>
+          <Image className="has-text-centered google-icon" src={GoogleImage} />
           Sign Up with Google
-        </Button>        
-        
+        </Button>
+
         <div className="has-text-centered is-fullwidth">
           <p className="has-text-grey">
             Already have an account? <a href="/sign-in">Log In Now</a>
