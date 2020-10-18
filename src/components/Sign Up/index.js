@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { fb } from "../../config/firebase-config";
 import { Form, Button, Message } from "react-bulma-components";
 import { useForm, Controller, ErrorMessage } from "react-hook-form";
-import { Container, Columns } from "react-bulma-components";
-// import DayPicker from "react-day-picker";
+import { Image } from "react-bulma-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import SignUpImage from "../../../public/img/SignUp.svg";
 import styles from "./styles";
 
 import validation from "./validation";
@@ -44,9 +46,16 @@ const SignUp = (props) => {
 
   return (
     <div className="homiez-signup">
+      <p className="is-size-3 title">
+        Sign Up
+      </p>
+      <Image
+        className="has-text-centered image-signup"
+        src={SignUpImage}
+      />
       <form>
         <Field>
-          <Label>First Name</Label>
+          <Label className="has-text-weight-medium">First Name</Label>
           <Control>
             <Controller
               as={Input}
@@ -62,7 +71,7 @@ const SignUp = (props) => {
         </Field>
 
         <Field>
-          <Label>Last Name</Label>
+          <Label className="has-text-weight-medium">Last Name</Label>
           <Control>
             <Controller
               as={Input}
@@ -78,7 +87,7 @@ const SignUp = (props) => {
         </Field>
 
         <Field>
-          <Label>Email</Label>
+          <Label className="has-text-weight-medium">Email</Label>
           <Control>
             <Controller
               as={Input}
@@ -94,7 +103,7 @@ const SignUp = (props) => {
         </Field>
 
         <Field>
-          <Label>Password</Label>
+          <Label className="has-text-weight-medium">Password</Label>
           <Control>
             <Controller
               as={Input}
@@ -110,6 +119,12 @@ const SignUp = (props) => {
                 </ErrorMessage> */}
         </Field>
 
+        <div className="is-fullwidth is-inline-flex t-and-c">
+          <p>By signing up, i have read and agree to the 
+            <a className="has-text-link">terms and conditions</a>
+          </p>
+        </div>
+
         <Button
           // loading={submissionLoading}
           type="submit"
@@ -119,10 +134,25 @@ const SignUp = (props) => {
         >
           Sign Up
         </Button>
-
-        <Link href="/signin">
-          <a>Log In Now</a>
-        </Link>
+        
+        <div className="divider">OR</div>
+        
+        <Button
+          // loading={submissionLoading}
+          className="is-outlined google-button"
+          type="submit"
+          size={size}
+          fullwidth
+        >
+          <FontAwesomeIcon icon={faGoogle} size="lg" className="google-icon"/>
+          Sign Up with Google
+        </Button>        
+        
+        <div className="has-text-centered is-fullwidth">
+          <p className="has-text-grey">
+            Already have an account? <a href="/sign-in">Log In Now</a>
+          </p>
+        </div>
 
         {/* {errorMessage && (
           <Message color="danger">
