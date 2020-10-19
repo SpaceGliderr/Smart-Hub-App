@@ -10,9 +10,6 @@ export default css.global`
     margin-left: auto;
     margin-right: auto;
   }
-  .link {
-    width: 100%;
-  }
   .t-and-c {
     margin-bottom: 0.5em;
   }
