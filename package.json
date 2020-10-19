@@ -21,6 +21,7 @@
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-bulma-components": "3.4.0",
+    "react-date-picker": "^8.0.3",
     "react-dom": "16.13.1",
     "react-hook-form": "^6.9.3",
     "yup": "^0.29.3"
