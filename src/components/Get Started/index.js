@@ -1,10 +1,9 @@
-import Link from "next/link";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { fb } from "../../config/firebase-config";
-import { Form, Button, Message } from "react-bulma-components";
-import { useForm, Controller, ErrorMessage } from "react-hook-form";
-import { Image, Columns } from "react-bulma-components";
+import { Button } from "react-bulma-components";
+import { useForm } from "react-hook-form";
+import { Image } from "react-bulma-components";
 import VectorTop from "../../../public/img/get-started-top.svg";
 import Logo from "../../../public/img/logo.svg";
 import GetStartedImage from "../../../public/img/get-started.svg";
@@ -13,12 +12,9 @@ import styles from "./styles";
 
 import validation from "./validation";
 
-const { Field, Control, Input, Select, Label } = Form;
-
 const GetStarted = (props) => {
   const { size } = props;
 
-  const currentDate = new Date();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [notification, setNotification] = useState("");
