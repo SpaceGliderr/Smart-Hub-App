@@ -1,6 +1,9 @@
 import css from "styled-jsx/css";
 
 export default css.global`
+  .homiez-get-started {
+    overflow-x:auto;
+  }
   .top-bar {
     position: absolute;
     left: 0;
@@ -16,7 +19,6 @@ export default css.global`
     right: 0;
   }
   .per-page {
-    padding: 10px;
     width: 110%;
     z-index -1;
   }
@@ -61,7 +63,7 @@ export default css.global`
     width: 30%;
   }
   .r-col {
-    width: 10%;
+    width: 30%;
   }
   .desc {
     min-height: 100px;

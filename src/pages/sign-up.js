@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Columns } from "react-bulma-components";
+import { Columns } from "react-bulma-components";
 import SignUp from "../components/Sign Up";
 
 const Index = () => {

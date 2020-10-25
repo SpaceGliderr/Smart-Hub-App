@@ -11,12 +11,11 @@ import styles from "./styles";
 
 import validation from "./validation";
 
-const { Field, Control, Input, Select, Label } = Form;
+const { Field, Control, Input, Label } = Form;
 
 const SignIn = (props) => {
   const { size } = props;
 
-  const currentDate = new Date();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [notification, setNotification] = useState("");

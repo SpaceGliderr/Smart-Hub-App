@@ -80,7 +80,7 @@ const OnBoarding = () => {
           {currentSlide === data.length - 1 ? cont : skip}
         </Button>
       </div>
-      <Columns className="gcn-get-started">
+      <Columns className="homiez-get-started">
         <Columns.Column className="has-text-centered">
           <CarouselProvider
             currentSlide={currentSlide}
@@ -90,7 +90,7 @@ const OnBoarding = () => {
             dragEnabled={false}
             isIntrinsicHeight
           >
-            <Slider className="per-page is-fullwidth">
+            <Slider className="per-page">
               {map(data, (image, index) => {
                 return (
                   <Slide index={index} key={index}>
@@ -121,7 +121,7 @@ const OnBoarding = () => {
                 </Button>
               </div>
               <DotGroup />
-              <div className="r-col is-inline-block has-text-right">
+              <div className="is-inline-block has-text-right">
                 <Button
                   className={classnames("has-text-primary previous-button", {
                     "is-hidden": currentSlide === data.length - 1,
