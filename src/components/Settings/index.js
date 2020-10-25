@@ -2,9 +2,10 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { fb } from "../../config/firebase-config";
-import { Form, Button, Message, Heading } from "react-bulma-components";
-import { useForm, Controller, ErrorMessage } from "react-hook-form";
+import { Form, Button, Message, Modal } from "react-bulma-components";
+import { useForm, ErrorMessage } from "react-hook-form";
 import Switch from "react-switch";
+import ReactStars from "react-rating-stars-component";
 import back from "../../../public/img/back-arrow1.svg";
 import userProfile from "../../../public/img/visit-profile-arrow.svg";
 import proceed from "../../../public/img/proceed-button.svg";
@@ -13,16 +14,15 @@ import styles from "./styles";
 
 import validation from "./validation";
 
-const { Field, Control, Input, Select, Label } = Form;
+const { Textarea } = Form;
 
 const Settings = (props) => {
   const { size } = props;
 
-  const currentDate = new Date();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [change, setChange] = useState("");
   const [checked, setChecked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [notification, setNotification] = useState("");
 
   const { control } = useForm({
@@ -45,6 +45,14 @@ const Settings = (props) => {
     setTimeout(() => {
       setNotification("");
     }, 2000);
+  };
+
+  const onToggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
   };
 
   return (
@@ -206,7 +214,73 @@ const Settings = (props) => {
               </div>
             </li>
           </ul>
+          <p className="menu-label">Feedback</p>
+          <ul className="menu-list">
+            <li>
+              <div className="is-inline-flex is-full-width">
+                <a>Feedback</a>
+                <div className="right">
+                  <Button
+                    className="proceed-button"
+                    onClick={() => setShowModal(!showModal)}
+                  >
+                    <img className="image" src={proceed} />
+                  </Button>
+                </div>
+              </div>
+            </li>
+          </ul>
         </aside>
+
+        <Modal
+          className="collection-form"
+          show={showModal}
+          onClose={onToggleModal}
+          closeOnBlur
+        >
+          <Modal.Card>
+            <Modal.Card.Body>
+              <p className="has-text-weight-medium is-size-4">Feedback Form</p>
+              <div className="rating">
+                <ReactStars
+                  className="rating"
+                  count={5}
+                  onChange={ratingChanged}
+                  size={60}
+                  isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+              </div>
+              <Textarea
+                className="textarea field"
+                placeholder="Have any comments? Leave them here!"
+              />
+              <div className="is-inline-flex">
+                <Button
+                  className="button is-light"
+                  type="submit"
+                  size={size}
+                  fullwidth
+                  onClick={onToggleModal}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  className="submit-button "
+                  type="submit"
+                  color="primary"
+                  size={size}
+                  fullwidth
+                >
+                  Submit
+                </Button>
+              </div>
+            </Modal.Card.Body>
+          </Modal.Card>
+        </Modal>
       </div>
       <style jsx>{styles}</style>
     </div>
@@ -215,7 +289,7 @@ const Settings = (props) => {
 
 // ======================= PROPS
 Settings.propTypes = {
-  size: PropTypes.oneOf(["normal"]),
+  size: PropTypes.oneOf(["small"]),
 };
 
 export default Settings;

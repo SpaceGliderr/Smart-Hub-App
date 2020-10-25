@@ -45,4 +45,22 @@ export default css.global`
     border: none;
     background: none;
   }
+  .collection-form {
+    padding: 0 1em;
+  }
+  .rating div > div{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .field {
+    margin-bottom: 1em;
+  }
+  .submit-button {
+    max-width: 80px;
+    right: 1.3em;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
