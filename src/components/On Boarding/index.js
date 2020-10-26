@@ -114,7 +114,6 @@ const OnBoarding = () => {
                   className={classnames("has-text-primary", {
                     "is-hidden": currentSlide === 0,
                   })}
-                  size="normal"
                   onClick={onHandlePrev}
                 >
                   Previous
@@ -127,7 +126,6 @@ const OnBoarding = () => {
                     "is-hidden": currentSlide === data.length - 1,
                   })}
                   style={{ cursor: "pointer" }}
-                  size="normal"
                   onClick={onHandleNext}
                 >
                   Next
