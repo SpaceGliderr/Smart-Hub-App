@@ -124,7 +124,7 @@ const Home = () => {
         </Button>
         <img className="center" src={logo} />
       </div>
-      <div className="is-size-5 right is-fullwidth">
+      <div className="is-size-5 right">
         <p>29°C/Subang Jaya</p>
       </div>
       <div className="is-size-5 title">
@@ -141,7 +141,7 @@ const Home = () => {
           </button>
         </div>
 
-        <Columns fullwidth>
+        <Columns fullwidth="true">
           <Columns.Column>
             {map(smartDevice, (section, index) => {
               return (
@@ -192,7 +192,7 @@ const Home = () => {
           </button>
         </div>
 
-        <Columns fullwidth>
+        <Columns fullwidth="true">
           <Columns.Column>
             {map(room, (section, index) => {
               return (
@@ -247,7 +247,7 @@ const Home = () => {
           </button>
         </div>
 
-        <Columns fullwidth>
+        <Columns fullwidth="true">
           <Columns.Column>
             {map(kitchenDevice, (section, index) => {
               return (
