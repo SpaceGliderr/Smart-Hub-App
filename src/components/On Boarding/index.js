@@ -73,12 +73,14 @@ const OnBoarding = () => {
     <>
       <div className="is-inline-flex top-bar">
         <img className="" src={logo} />
-        <Button
-          className="has-text-primary is-size-5 top-button"
-          onClick={onHandleProceed}
-        >
-          {currentSlide === data.length - 1 ? cont : skip}
-        </Button>
+        <a href="/home">
+          <Button
+            className="has-text-primary is-size-5 top-button"
+            onClick={onHandleProceed}
+          >
+            {currentSlide === data.length - 1 ? cont : skip}
+          </Button>
+        </a>
       </div>
       <Columns className="homiez-get-started">
         <Columns.Column className="has-text-centered">

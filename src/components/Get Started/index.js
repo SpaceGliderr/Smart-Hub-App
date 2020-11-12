@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import { Link } from "react-router";
 import { fb } from "../../config/firebase-config";
 import { Button } from "react-bulma-components";
 import { useForm } from "react-hook-form";
@@ -48,16 +49,18 @@ const GetStarted = (props) => {
       </div>
       <Image className="center logo" src={Logo} />
       <Image className="center get-started" src={GetStartedImage} />
-      <Button
-        className="get-started-button"
-        // loading={submissionLoading}
-        type="submit"
-        color="primary"
-        size={size}
-        fullwidth
-      >
-        Get Started
-      </Button>
+      <a href="/on-boarding">
+        <Button
+          className="get-started-button"
+          // loading={submissionLoading}
+          type="submit"
+          color="primary"
+          size={size}
+          fullwidth
+        >
+          Get Started
+        </Button>
+      </a>
       <div className="has-text-centered is-fullwidth">
         <p className="has-text-grey">
           Already have an account? <a href="/sign-in">Sign In Now</a>
