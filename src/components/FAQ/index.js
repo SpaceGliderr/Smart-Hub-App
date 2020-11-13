@@ -84,9 +84,11 @@ const FAQ = (props) => {
   return (
     <div className="homiez-account-details">
       <div className="top-bar is-inline-flex">
-        <Button className="back-button">
-          <img className="image is-24x24" src={back} />
-        </Button>
+        <a href="/home">
+          <Button className="back-button">
+            <img className="image is-24x24" src={back} />
+          </Button>
+        </a>
         <p className="first-caption is-size-3">FAQ</p>
       </div>
       <p className="is-size-4 has-text-weight-medium section-title">General</p>
