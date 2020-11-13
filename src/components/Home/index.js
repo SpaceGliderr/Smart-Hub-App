@@ -1,11 +1,21 @@
 import map from "lodash/map";
-import classnames from "classnames";
 import React, { useState } from "react";
-import { Button, Columns } from "react-bulma-components";
+import { Button, Columns, Modal } from "react-bulma-components";
 import Switch from "react-switch";
 import logo from "../../../public/img/logo-only.svg";
+import logoHorizontal from "../../../public/img/logo-horizontal.svg";
 import menu from "../../../public/img/menu-button.svg";
 import proceed from "../../../public/img/proceed-button.svg";
+import userProfile from "../../../public/img/visit-profile-arrow.svg";
+import roomIcon from "../../../public/img/room-icon.svg";
+import devicesIcon from "../../../public/img/devices-icon.svg";
+import scenesIcon from "../../../public/img/scenes-icon.svg";
+import routinesIcon from "../../../public/img/routines-icon.svg";
+import membersIcon from "../../../public/img/members-icon.svg";
+import settingsIcon from "../../../public/img/settings-icon.svg";
+import feedbackIcon from "../../../public/img/feedback-icon.svg";
+import faqIcon from "../../../public/img/faq-icon.svg";
+import contactUsIcon from "../../../public/img/contact-us-icon.svg";
 import smartDevice1 from "../../../public/img/smart-device-1.svg";
 import smartDevice2 from "../../../public/img/smart-device-2.svg";
 import smartDevice3 from "../../../public/img/smart-device-3.svg";
@@ -31,6 +41,7 @@ import styles from "./styles";
 const Home = () => {
   // ======================= VARIABLES & HOOKS
   const [active, setActive] = useState(false);
+  const [modal, setModal] = useState(false);
   // ======================= EVENTS
   const smartDevice = [
     {
@@ -110,21 +121,175 @@ const Home = () => {
     },
   ];
 
-  const onHandleProceed = () => {
-    setCookie("get-started", nextFlag);
-    redirect({}, "/signup", "push");
+  const icon = [
+    {
+      id: "1",
+      title: "Room",
+      img: roomIcon,
+    },
+    {
+      id: "2",
+      title: "Devices",
+      img: devicesIcon,
+    },
+    {
+      id: "3",
+      title: "Scenes",
+      img: scenesIcon,
+    },
+    {
+      id: "4",
+      title: "Routines",
+      img: routinesIcon,
+    },
+    {
+      id: "5",
+      title: "Members",
+      img: membersIcon,
+    },
+  ];
+
+  const icon1 = [
+    {
+      id: "1",
+      title: "Settings",
+      img: settingsIcon,
+      href: "/settings",
+    },
+    {
+      id: "2",
+      title: "Feedback",
+      img: feedbackIcon,
+      href: "/feedback",
+    },
+  ];
+
+  const icon2 = [
+    {
+      id: "1",
+      title: "FAQ",
+      img: faqIcon,
+      href: "/faq",
+    },
+    {
+      id: "2",
+      title: "Contact Us",
+      img: contactUsIcon,
+      href: "/contact-us",
+    },
+  ];
+
+  const onToggleModal = () => {
+    setModal(!modal);
+  };
+
+  const renderCTA = () => {
+    if (modal) {
+      return (
+        <div className="">
+          <Modal
+            className="navbar-menu-in"
+            show={modal}
+            onClose={onToggleModal}
+            closeOnBlur
+          >
+            <Modal.Card className="full-height left is-absolute">
+              <Modal.Card.Body className="nav-bar animate__fadeInLeft">
+                <aside className="menu">
+                  <div className="logo-horizontal">
+                    <img src={logoHorizontal} />
+                  </div>
+                  <div className="user-profile">
+                    <div className="is-inline-flex">
+                      <p className="has-text-weight-medium">Nicholas Lee</p>
+                      <Button className="right is-absolute auto none-backgound">
+                        <img className="image is-32x32" src={userProfile} />
+                      </Button>
+                    </div>
+                    <p className="has-text-grey is-size-7">
+                      nilchyyy@gmail.com
+                    </p>
+                  </div>
+                  <p className="menu-label">My Home</p>
+                  {map(icon, (section, index) => {
+                    return (
+                      <div index={index} key={section.id}>
+                        <ul className="menu-list">
+                          <a>
+                            <div className="is-inline-flex">
+                              <img
+                                className="image is-24x24 proceed-button"
+                                src={section.img}
+                              />
+                              <p className="name">{section.title}</p>
+                            </div>
+                          </a>
+                        </ul>
+                      </div>
+                    );
+                  })}
+                  <p className="menu-label">General</p>
+                  {map(icon1, (section, index) => {
+                    return (
+                      <div index={index} key={section.id}>
+                        <ul className="menu-list">
+                          <a href={section.href}>
+                            <div className="is-inline-flex">
+                              <img
+                                className="image is-24x24 proceed-button"
+                                src={section.img}
+                              />
+                              <p className="name">{section.title}</p>
+                            </div>
+                          </a>
+                        </ul>
+                      </div>
+                    );
+                  })}
+                  <p className="menu-label">Help</p>
+                  {map(icon2, (section, index) => {
+                    return (
+                      <div index={index} key={section.id}>
+                        <ul className="menu-list">
+                          <a href={section.href}>
+                            <div className="is-inline-flex">
+                              <img
+                                className="image is-24x24 proceed-button"
+                                src={section.img}
+                              />
+                              <p className="name">{section.title}</p>
+                            </div>
+                          </a>
+                        </ul>
+                      </div>
+                    );
+                  })}
+                </aside>
+              </Modal.Card.Body>
+            </Modal.Card>
+          </Modal>
+        </div>
+      );
+    }
+    return null;
   };
 
   // ======================= VIEWS
   return (
     <>
-      <div className="is-inline-flex top-bar">
-        <Button className="menu-button">
+      {renderCTA()}
+      <div className="is-inline-flex top-bar is-absolute">
+        <Button
+          className="proceed-button is-absolute none-backgound"
+          onClick={() => {
+            setModal(true);
+          }}
+        >
           <img className="image is-24x24" src={menu} />
         </Button>
-        <img className="center" src={logo} />
+        <img className="center auto" src={logo} />
       </div>
-      <div className="is-size-5 right">
+      <div className="is-size-5 right auto is-absolute">
         <p>29°C/Subang Jaya</p>
       </div>
       <div className="is-size-5 title">
@@ -136,7 +301,7 @@ const Home = () => {
       <div className="places smart-devices">
         <div className="is-inline-flex">
           <p className="has-text-dark">Smart Devices</p>
-          <button className="proceed-button">
+          <button className="proceed-button none-backgound">
             <img className="is-16x16" src={proceed} />
           </button>
         </div>
@@ -160,7 +325,7 @@ const Home = () => {
                         <p className="has-text-grey-light is-size-7">Off</p>
                       )}
                     </div>
-                    <div className="right-switch">
+                    <div className="right-switch auto is-absolute">
                       <Switch
                         checked={active}
                         onChange={() => setActive(!active)}
@@ -187,7 +352,7 @@ const Home = () => {
       <div className="places area">
         <div className="is-inline-flex">
           <p className="has-text-dark">Living Room</p>
-          <button className="proceed-button">
+          <button className="proceed-button none-backgound">
             <img className="is-16x16" src={proceed} />
           </button>
         </div>
@@ -215,7 +380,7 @@ const Home = () => {
                         </p>
                       )}
                     </div>
-                    <div className="right-switch">
+                    <div className="right-switch is-absolute">
                       <Switch
                         checked={active}
                         onChange={() => setActive(!active)}
@@ -242,7 +407,7 @@ const Home = () => {
       <div className="places kitchen">
         <div className="is-inline-flex">
           <p className="has-text-dark">Kitchen</p>
-          <button className="proceed-button">
+          <button className="proceed-button none-backgound">
             <img className="is-16x16" src={proceed} />
           </button>
         </div>
@@ -266,7 +431,7 @@ const Home = () => {
                         <p className="has-text-grey-light is-size-7">Off</p>
                       )}
                     </div>
-                    <div className="right-switch">
+                    <div className="right-switch is-absolute">
                       <Switch
                         checked={active}
                         onChange={() => setActive(!active)}
