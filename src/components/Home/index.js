@@ -202,9 +202,11 @@ const Home = () => {
                   <div className="user-profile">
                     <div className="is-inline-flex">
                       <p className="has-text-weight-medium">Nicholas Lee</p>
-                      <Button className="right is-absolute auto none-backgound">
-                        <img className="image is-32x32" src={userProfile} />
-                      </Button>
+                      <a href="/account">
+                        <Button className="right is-absolute auto none-backgound">
+                          <img className="image is-32x32" src={userProfile} />
+                        </Button>
+                      </a>
                     </div>
                     <p className="has-text-grey is-size-7">
                       nilchyyy@gmail.com
