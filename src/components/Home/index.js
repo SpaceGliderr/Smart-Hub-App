@@ -160,7 +160,7 @@ const Home = () => {
       id: "2",
       title: "Feedback",
       img: feedbackIcon,
-      href: "/feedback",
+      href: "/settings",
     },
   ];
 

@@ -56,9 +56,11 @@ const ContactUs = (props) => {
   return (
     <div className="homiez-contact-us">
       <div className="top-bar is-inline-flex">
-        <Button className="back-button">
-          <img className="image is-24x24" src={back} />
-        </Button>
+        <a href="/home">
+          <Button className="back-button">
+            <img className="image is-24x24" src={back} />
+          </Button>
+        </a>
         <p className="first-caption is-size-3">Contact Us</p>
       </div>
       <div className="contact-us">

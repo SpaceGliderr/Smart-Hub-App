@@ -46,9 +46,11 @@ const AccountDetails = (props) => {
   return (
     <div className="homiez-account-details">
       <div className="top-bar is-inline-flex">
-        <Button className="back-button proceed-button">
-          <img className="image is-24x24" src={back} />
-        </Button>
+        <a href="/settings">
+          <Button className="back-button proceed-button">
+            <img className="image is-24x24" src={back} />
+          </Button>
+        </a>
         <p className="first-caption is-size-3">Account</p>
       </div>
       <Field>

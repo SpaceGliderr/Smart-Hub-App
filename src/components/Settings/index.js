@@ -72,9 +72,11 @@ const Settings = (props) => {
             <div className="user-profile">
               <div className="is-inline-flex name">
                 <p className="has-text-weight-medium">Nicholas Lee</p>
-                <Button className="right back-button proceed-button">
-                  <img className="image is-32x32" src={userProfile} />
-                </Button>
+                <a href="/account">
+                  <Button className="right back-button proceed-button">
+                    <img className="image is-32x32" src={userProfile} />
+                  </Button>
+                </a>
               </div>
               <p className="has-text-grey">nilchyyy@gmail.com</p>
             </div>
