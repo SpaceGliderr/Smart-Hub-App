@@ -82,6 +82,15 @@ export default css.global`
   .smart-devices {
     background: #bee3db;
   }
+  .smart-device-content {
+    background: #f7fff7;
+  }
+  .living-room-content {
+    background: #fff9e9;
+  }
+  .kitchen-content {
+    background: #fcffec;
+  }
   .none-backgound {
     border: none;
     background: none;
@@ -95,11 +104,11 @@ export default css.global`
     padding: 5px;
     margin-top: 5px;
     height: 57px;
-    background: #f7fff7;
     border: 2px solid #dddddd;
     box-sizing: border-box;
     border-radius: 10px;
   }
+
   .image {
     margin-right: 10px;
     max-height: 46px;

@@ -310,7 +310,11 @@ const Home = () => {
           <Columns.Column>
             {map(smartDevice, (section, index) => {
               return (
-                <Columns.Column className="devices" index={index} key={index}>
+                <Columns.Column
+                  className="devices smart-device-content"
+                  index={index}
+                  key={index}
+                >
                   <div className="is-inline-flex">
                     {active ? (
                       <img className="image" src={section.imgActive} />
@@ -361,7 +365,11 @@ const Home = () => {
           <Columns.Column>
             {map(room, (section, index) => {
               return (
-                <Columns.Column className="devices" index={index} key={index}>
+                <Columns.Column
+                  className="devices living-room-content"
+                  index={index}
+                  key={index}
+                >
                   <div className="is-inline-flex">
                     {active ? (
                       <img className="image" src={section.imgActive} />
@@ -384,7 +392,7 @@ const Home = () => {
                       <Switch
                         checked={active}
                         onChange={() => setActive(!active)}
-                        onColor="#00D1B2"
+                        onColor="#d1c000"
                         onHandleColor="#ffffff"
                         handleDiameter={12}
                         uncheckedIcon={true}
@@ -416,7 +424,11 @@ const Home = () => {
           <Columns.Column>
             {map(kitchenDevice, (section, index) => {
               return (
-                <Columns.Column className="devices" index={index} key={index}>
+                <Columns.Column
+                  className="devices kitchen-content"
+                  index={index}
+                  key={index}
+                >
                   <div className="is-inline-flex">
                     {active ? (
                       <img className="image" src={section.imgActive} />
@@ -435,7 +447,7 @@ const Home = () => {
                       <Switch
                         checked={active}
                         onChange={() => setActive(!active)}
-                        onColor="#00D1B2"
+                        onColor="#dbd801"
                         onHandleColor="#ffffff"
                         handleDiameter={12}
                         uncheckedIcon={true}
