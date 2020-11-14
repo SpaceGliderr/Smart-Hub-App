@@ -1,11 +1,12 @@
 import map from "lodash/map";
 import React, { useState } from "react";
-import { Button, Columns, Modal } from "react-bulma-components";
+import { Button, Columns, Modal, Icon } from "react-bulma-components";
 import Switch from "react-switch";
 import logo from "../../../public/img/logo-only.svg";
 import logoHorizontal from "../../../public/img/logo-horizontal.svg";
 import menu from "../../../public/img/menu-button.svg";
 import proceed from "../../../public/img/proceed-button.svg";
+import addIcon from "../../../public/img/add-icon.svg";
 import userProfile from "../../../public/img/visit-profile-arrow.svg";
 import roomIcon from "../../../public/img/room-icon.svg";
 import devicesIcon from "../../../public/img/devices-icon.svg";
@@ -295,6 +296,14 @@ const Home = () => {
         <p>29°C/Subang Jaya</p>
       </div>
       <div className="is-size-5 title">
+        <Button
+          onClick=""
+          className="floating-add-button is-primary is-paddingless right"
+        >
+          <Icon className="is-small">
+            <img src={addIcon} />
+          </Icon>
+        </Button>
         <p className="is-size-4 greetings has-tet-weight-bold">Good Evening,</p>
         {/* will change to actual greetings based on the time once firebase is linked */}
         <p className="name is-size-3 name">Name</p>
@@ -394,7 +403,7 @@ const Home = () => {
                       <Switch
                         checked={active}
                         onChange={() => setActive(!active)}
-                        onColor="#d1c000"
+                        onColor="#ffb404"
                         onHandleColor="#ffffff"
                         handleDiameter={12}
                         uncheckedIcon={true}
@@ -449,7 +458,7 @@ const Home = () => {
                       <Switch
                         checked={active}
                         onChange={() => setActive(!active)}
-                        onColor="#dbd801"
+                        onColor="#e7e300"
                         onHandleColor="#ffffff"
                         handleDiameter={12}
                         uncheckedIcon={true}

@@ -123,4 +123,12 @@ export default css.global`
   .kitchen {
     background: #fbfca4;
   }
+  .floating-add-button {
+    margin-top: 1.5em;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.35);
+    width: 65px;
+    height: 65px;
+  }
 `;
