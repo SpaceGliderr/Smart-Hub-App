@@ -219,15 +219,12 @@ const Settings = (props) => {
             </li>
           </ul>
           <p className="menu-label">Feedback</p>
-          <ul className="menu-list">
+          <ul className="menu-list" onClick={() => setShowModal(!showModal)}>
             <li>
               <div className="is-inline-flex is-full-width">
                 <a>Feedback</a>
                 <div className="right">
-                  <Button
-                    className="proceed-button"
-                    onClick={() => setShowModal(!showModal)}
-                  >
+                  <Button className="proceed-button">
                     <img className="image" src={proceed} />
                   </Button>
                 </div>
