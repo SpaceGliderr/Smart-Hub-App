@@ -124,11 +124,23 @@ export default css.global`
     background: #fbfca4;
   }
   .floating-add-button {
-    margin-top: 1.5em;
-    position: absolute;
+    right: 3em;
+    bottom: 3em;
+    position: fixed;
     border-radius: 50%;
-    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.35);
-    width: 65px;
-    height: 65px;
+    z-index: 9999;
+  }
+  .fab-button {
+    background-color: #00d1b2;
+  }
+  .fab-button:hover {
+    background-color: #00d1b2;
+  }
+  .fab-action {
+    background: white;
+  }
+  .icon-action-button {
+    min-height: 16px;
+    min-width: 16px;
   }
 `;

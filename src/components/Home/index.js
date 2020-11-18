@@ -1,6 +1,8 @@
 import map from "lodash/map";
 import React, { useState } from "react";
 import { Button, Columns, Modal, Icon } from "react-bulma-components";
+// import { Container, Link } from "react-floating-action-button";
+import { Fab, FabButton, FabActions, FabAction } from "react-fab";
 import Switch from "react-switch";
 import logo from "../../../public/img/logo-only.svg";
 import logoHorizontal from "../../../public/img/logo-horizontal.svg";
@@ -127,26 +129,31 @@ const Home = () => {
       id: "1",
       title: "Room",
       img: roomIcon,
+      href: "/room",
     },
     {
       id: "2",
       title: "Devices",
       img: devicesIcon,
+      href: "/devices",
     },
     {
       id: "3",
       title: "Scenes",
       img: scenesIcon,
+      href: "/scenes",
     },
     {
       id: "4",
       title: "Routines",
       img: routinesIcon,
+      href: "/routines",
     },
     {
       id: "5",
       title: "Members",
       img: membersIcon,
+      href: "/members",
     },
   ];
 
@@ -296,14 +303,55 @@ const Home = () => {
         <p>29°C/Subang Jaya</p>
       </div>
       <div className="is-size-5 title">
-        <Button
-          onClick=""
-          className="floating-add-button is-primary is-paddingless right"
-        >
-          <Icon className="is-small">
-            <img src={addIcon} />
-          </Icon>
+        <Button className="floating-add-button is-paddingless right">
+          <Fab>
+            <FabButton className="is-white">
+              <p className="has-text-white">+</p>
+            </FabButton>
+            <FabActions>
+              {map(icon, (section, index) => {
+                return (
+                  <FabAction
+                    className="button"
+                    index={index}
+                    key={section.id}
+                    tooltip={section.title}
+                  >
+                    <a href={section.href}>
+                      <img className="icon-action-button" src={section.img} />
+                    </a>
+                  </FabAction>
+                );
+              })}
+              {/* <a>
+                <FabAction className="button" tooltip="members">
+                  <img className="icon-action-button" src={membersIcon} />
+                </FabAction>
+              </a>
+              <a>
+                <FabAction className="button" tooltip="Routines">
+                  <img className="icon-action-button" src={routinesIcon} />
+                </FabAction>
+              </a>
+              <a>
+                <FabAction className="button" tooltip="Scenes">
+                  <img className="icon-action-button" src={scenesIcon} />
+                </FabAction>
+              </a>
+              <a>
+                <FabAction className="button" tooltip="Devices">
+                  <img className="icon-action-button" src={devicesIcon} />
+                </FabAction>
+              </a>
+              <a>
+                <FabAction className="button" tooltip="Room">
+                  <img className="icon-action-button" src={roomIcon} />
+                </FabAction>
+              </a> */}
+            </FabActions>
+          </Fab>
         </Button>
+
         <p className="is-size-4 greetings has-tet-weight-bold">Good Evening,</p>
         {/* will change to actual greetings based on the time once firebase is linked */}
         <p className="name is-size-3 name">Name</p>
