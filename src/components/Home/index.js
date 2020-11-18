@@ -1,7 +1,6 @@
 import map from "lodash/map";
 import React, { useState } from "react";
 import { Button, Columns, Modal, Icon } from "react-bulma-components";
-// import { Container, Link } from "react-floating-action-button";
 import { Fab, FabButton, FabActions, FabAction } from "react-fab";
 import Switch from "react-switch";
 import logo from "../../../public/img/logo-only.svg";
@@ -129,7 +128,7 @@ const Home = () => {
       id: "1",
       title: "Room",
       img: roomIcon,
-      href: "/room",
+      href: "/add-room",
     },
     {
       id: "2",
@@ -323,31 +322,6 @@ const Home = () => {
                   </FabAction>
                 );
               })}
-              {/* <a>
-                <FabAction className="button" tooltip="members">
-                  <img className="icon-action-button" src={membersIcon} />
-                </FabAction>
-              </a>
-              <a>
-                <FabAction className="button" tooltip="Routines">
-                  <img className="icon-action-button" src={routinesIcon} />
-                </FabAction>
-              </a>
-              <a>
-                <FabAction className="button" tooltip="Scenes">
-                  <img className="icon-action-button" src={scenesIcon} />
-                </FabAction>
-              </a>
-              <a>
-                <FabAction className="button" tooltip="Devices">
-                  <img className="icon-action-button" src={devicesIcon} />
-                </FabAction>
-              </a>
-              <a>
-                <FabAction className="button" tooltip="Room">
-                  <img className="icon-action-button" src={roomIcon} />
-                </FabAction>
-              </a> */}
             </FabActions>
           </Fab>
         </Button>

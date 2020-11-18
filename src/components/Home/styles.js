@@ -108,7 +108,6 @@ export default css.global`
     box-sizing: border-box;
     border-radius: 10px;
   }
-
   .image {
     margin-right: 10px;
     max-height: 46px;
