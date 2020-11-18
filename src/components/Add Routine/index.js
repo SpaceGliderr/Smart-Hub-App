@@ -1,17 +1,18 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { fb } from "../../config/firebase-config";
-import { Form, Button, Message, Heading } from "react-bulma-components";
-import { useForm, Controller, ErrorMessage } from "react-hook-form";
+import { Form, Button } from "react-bulma-components";
+import { useForm, Controller } from "react-hook-form";
 import back from "../../../public/img/back-arrow1.svg";
 import logo from "../../../public/img/logo-only.svg";
+import proceed from "../../../public/img/proceed-button.svg";
 import styles from "./styles";
 
 import validation from "./validation";
 
 const { Field, Control, Input, Select, Label } = Form;
 
-const AddDevice = (props) => {
+const AddRoutine = (props) => {
   const { size } = props;
 
   const [title, setTitle] = useState("");
@@ -41,7 +42,7 @@ const AddDevice = (props) => {
   };
 
   return (
-    <div>
+    <div className="homiez-add-room">
       <div className="is-inline-flex top-bar is-absolute">
         <a href="/home">
           <Button className="proceed-button is-absolute none-backgound">
@@ -50,62 +51,32 @@ const AddDevice = (props) => {
         </a>
         <img className="center auto" src={logo} />
       </div>
-      <p className="is-size-3 has-text-weight-medium Title">Add a Device</p>
+      <p className="is-size-3 has-text-weight-medium title">Add a Routine</p>
       <form>
         <Field>
-          <Label className="has-text-weight-medium">Type</Label>
+          <Label className="has-text-weight-medium">Time On</Label>
           <Control>
             <Controller
-              as={
-                <Select
-                  value={value}
-                  className="custom-select"
-                  size="medium"
-                  fullWidth
-                >
-                  <option value="Male">Smart Light</option>
-                  <option value="Female">Refridgerator</option>
-                  <option value="Others">Air Condition</option>
-                  <option value="Others">Robot Vacuum</option>
-                  <option value="Others">Smart Home</option>
-                </Select>
-              }
+              as={Input}
               control={control}
-              name="type of devices"
+              name="room name"
               size={size}
-              placeholder="Model"
+              placeholder="Enter room name"
             />
           </Control>
         </Field>
 
-        <Field>
-          <Label className="has-text-weight-medium">Brand</Label>
-          <Control>
-            <Controller
-              as={
-                <Select
-                  value={value}
-                  className="custom-select"
-                  size="medium"
-                  fullWidth
-                >
-                  <option value="Male">Google</option>
-                  <option value="Female">Samsung</option>
-                  <option value="Others">Amazon</option>
-                  <option value="Others">Nest</option>
-                  <option value="Others">Philips</option>
-                </Select>
-              }
-              control={control}
-              name="type of devices"
-              size={size}
-              placeholder="Model"
-            />
-          </Control>
+        <Field className="is-inline-flex is-fullwidth">
+          <p className="has-text-weight-medium">Repeat</p>
+          <button className="proceed-button none-backgound auto right is-absolute">
+            <img className="is-16x16" src={proceed} />
+          </button>
         </Field>
 
         <Field>
-          <Label className="has-text-weight-medium">Series</Label>
+          <Label className="has-text-weight-medium">
+            Which smart home device you would like to be added into this room?
+          </Label>
           <Control>
             <Controller
               as={
@@ -117,7 +88,7 @@ const AddDevice = (props) => {
                 >
                   <option value="Male">Google Home Mini</option>
                   <option value="Female">Google Home Max</option>
-                  <option value="Others">Google Nest</option>
+                  <option value="Others">Philip Hue</option>
                 </Select>
               }
               control={control}
@@ -138,8 +109,8 @@ const AddDevice = (props) => {
 };
 
 // ======================= PROPS
-AddDevice.propTypes = {
+AddRoutine.propTypes = {
   size: PropTypes.oneOf(["normal"]),
 };
 
-export default AddDevice;
+export default AddRoutine;

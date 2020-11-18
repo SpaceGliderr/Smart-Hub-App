@@ -7,7 +7,6 @@ import logo from "../../../public/img/logo-only.svg";
 import logoHorizontal from "../../../public/img/logo-horizontal.svg";
 import menu from "../../../public/img/menu-button.svg";
 import proceed from "../../../public/img/proceed-button.svg";
-import addIcon from "../../../public/img/add-icon.svg";
 import userProfile from "../../../public/img/visit-profile-arrow.svg";
 import roomIcon from "../../../public/img/room-icon.svg";
 import devicesIcon from "../../../public/img/devices-icon.svg";
@@ -146,7 +145,7 @@ const Home = () => {
       id: "4",
       title: "Routines",
       img: routinesIcon,
-      href: "/routines",
+      href: "/add-routines",
     },
     {
       id: "5",

@@ -50,7 +50,7 @@ const AddRoom = (props) => {
         </a>
         <img className="center auto" src={logo} />
       </div>
-      <p className="is-size-3 has-text-weight-medium">Add a New Room</p>
+      <p className="is-size-3 has-text-weight-medium Title">Add a New Room</p>
       <form>
         <Field>
           <Label className="has-text-weight-medium">Room Name</Label>
