@@ -134,7 +134,7 @@ const Home = () => {
       id: "2",
       title: "Devices",
       img: devicesIcon,
-      href: "/devices",
+      href: "/add-device",
     },
     {
       id: "3",
