@@ -61,7 +61,20 @@ const AddRoutine = (props) => {
               control={control}
               name="room name"
               size={size}
-              placeholder="Enter room name"
+              placeholder="Set a time"
+            />
+          </Control>
+        </Field>
+
+        <Field>
+          <Label className="has-text-weight-medium">Time Off</Label>
+          <Control>
+            <Controller
+              as={Input}
+              control={control}
+              name="room name"
+              size={size}
+              placeholder="Set a time"
             />
           </Control>
         </Field>
