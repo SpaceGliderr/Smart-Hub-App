@@ -10,16 +10,6 @@ export default css.global`
   .gender {
     margin-right: 1em;
   }
-  // .finish-button {
-  //   position: absolute;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 1em;
-  //   width: 85%;
-  //   display: block;
-  //   margin-left: auto;
-  //   margin-right: auto;
-  // }
   select,
   option {
     width: 20em;
