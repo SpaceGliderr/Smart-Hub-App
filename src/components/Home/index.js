@@ -145,13 +145,13 @@ const Home = () => {
       id: "4",
       title: "Routines",
       img: routinesIcon,
-      href: "/",
+      href: "/add-routine",
     },
     {
       id: "5",
       title: "Members",
       img: membersIcon,
-      href: "/members",
+      href: "/add-member",
     },
   ];
 
