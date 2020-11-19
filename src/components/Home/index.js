@@ -122,6 +122,39 @@ const Home = () => {
     },
   ];
 
+  const titles = [
+    {
+      id: "1",
+      title: "Room",
+      img: roomIcon,
+      href: "/rooms",
+    },
+    {
+      id: "2",
+      title: "Devices",
+      img: devicesIcon,
+      href: "/devices",
+    },
+    {
+      id: "3",
+      title: "Scenes",
+      img: scenesIcon,
+      href: "/",
+    },
+    {
+      id: "4",
+      title: "Routines",
+      img: routinesIcon,
+      href: "/",
+    },
+    {
+      id: "5",
+      title: "Members",
+      img: membersIcon,
+      href: "/members",
+    },
+  ];
+
   const icon = [
     {
       id: "1",
@@ -219,11 +252,11 @@ const Home = () => {
                     </p>
                   </div>
                   <p className="menu-label">My Home</p>
-                  {map(icon, (section, index) => {
+                  {map(titles, (section, index) => {
                     return (
                       <div index={index} key={section.id}>
                         <ul className="menu-list">
-                          <a>
+                          <a href={section.href}>
                             <div className="is-inline-flex">
                               <img
                                 className="image is-24x24 proceed-button"
@@ -297,9 +330,9 @@ const Home = () => {
         </Button>
         <img className="center auto" src={logo} />
       </div>
-      <div className="is-size-5 right auto is-absolute">
+      {/* <div className="is-size-5 right auto is-absolute">
         <p>29°C/Subang Jaya</p>
-      </div>
+      </div> */}
       <div className="is-size-5 title">
         <Button className="floating-add-button is-paddingless right">
           <Fab>

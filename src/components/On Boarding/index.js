@@ -65,7 +65,7 @@ const OnBoarding = () => {
 
   const onHandleProceed = () => {
     setCookie("get-started", nextFlag);
-    redirect({}, "/signup", "push");
+    redirect({}, "/home", "push");
   };
 
   // ======================= VIEWS

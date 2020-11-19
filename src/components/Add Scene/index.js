@@ -42,7 +42,7 @@ const AddScene = (props) => {
   const [active, setActive] = useState(false);
   const [value, setValue] = useState("");
 
-  const { control } = useForm({
+  const { control, handleSubmit } = useForm({
     validationSchema: validation(),
   });
 
@@ -124,7 +124,7 @@ const AddScene = (props) => {
     },
   ];
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
 
     fb.firestore().collection("Test").add({
@@ -156,14 +156,14 @@ const AddScene = (props) => {
       <div className="has-text-grey is-size-6 bottom-caption">
         <p>Add a scene to have pre-selected device to be on /off</p>
       </div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Field>
           <Label className="has-text-weight-medium">Scene Name</Label>
           <Control>
             <Controller
               as={Input}
               control={control}
-              name="room name"
+              name="sceneName"
               size={size}
               placeholder="Enter scene name"
             />
@@ -171,16 +171,7 @@ const AddScene = (props) => {
         </Field>
 
         <Field>
-          <Label className="has-text-weight-medium">Selection</Label>
-          <Control>
-            <Controller
-              as={Input}
-              control={control}
-              name="room name"
-              size={size}
-              placeholder="Enter scene name"
-            />
-          </Control>
+          <Label className="has-text-weight-medium">Select Devices</Label>
           <div className="places area">
             <div className="is-inline-flex">
               <p className="has-text-dark">Living Room</p>
@@ -363,6 +354,7 @@ const AddScene = (props) => {
           color="primary"
           size={size}
           fullwidth
+          disabled
         >
           Finish
         </Button>

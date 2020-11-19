@@ -1,53 +1,43 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { fb } from "../../config/firebase-config";
+import { fb, auth } from "../../config/firebase-config";
 import { Form, Button, Message } from "react-bulma-components";
 import { useForm, Controller, ErrorMessage } from "react-hook-form";
 import { Image } from "react-bulma-components";
 import SignUpImage from "../../../public/img/sign-up.svg";
 import GoogleImage from "../../../public/img/google-icon.svg";
 import styles from "./styles";
-
+import {
+  createNewAccountEmailPass,
+  createNewAccountGoogle,
+} from "../../api/queries/query";
 import validation from "./validation";
+import { useRouter } from "next/router";
 
 const { Field, Control, Input, Select, Label } = Form;
 
 const SignUp = (props) => {
   const { size } = props;
+  const router = useRouter();
 
   const currentDate = new Date();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [notification, setNotification] = useState("");
 
-  const { control } = useForm({
+  const { control, handleSubmit } = useForm({
     validationSchema: validation(),
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    fb.firestore().collection("Test").add({
-      title: title,
-      content: content,
-    });
-
-    setTitle("");
-    setContent("");
-
-    setNotification("Created Notification");
-
-    setTimeout(() => {
-      setNotification("");
-    }, 2000);
+  const onSubmit = (data) => {
+    createNewAccountEmailPass(data);
+    console.log(data);
+    router.push("/sign-up-2");
   };
 
   return (
     <div className="homiez-signup">
       <p className="is-size-3 title">Sign Up</p>
       <Image className="has-text-centered image-signup" src={SignUpImage} />
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Field>
           <Label className="has-text-weight-medium">First Name</Label>
           <Control>
@@ -131,30 +121,30 @@ const SignUp = (props) => {
         </Button>
 
         <div className="divider">OR</div>
+      </form>
 
-        <Button
-          // loading={submissionLoading}
-          className="is-outlined google-button"
-          type="submit"
-          size={size}
-          fullwidth
-        >
-          <Image className="has-text-centered google-icon" src={GoogleImage} />
-          Sign Up with Google
-        </Button>
+      <Button
+        // loading={submissionLoading}
+        className="is-outlined google-button"
+        size={size}
+        fullwidth
+        onClick={createNewAccountGoogle}
+      >
+        <Image className="has-text-centered google-icon" src={GoogleImage} />
+        Sign Up with Google
+      </Button>
 
-        <div className="has-text-centered is-fullwidth">
-          <p className="has-text-grey">
-            Already have an account? <a href="/sign-in">Sign In Now</a>
-          </p>
-        </div>
+      <div className="has-text-centered is-fullwidth">
+        <p className="has-text-grey">
+          Already have an account? <a href="/sign-in">Sign In Now</a>
+        </p>
+      </div>
 
-        {/* {errorMessage && (
+      {/* {errorMessage && (
           <Message color="danger">
             <Message.Body>{errorMessage}</Message.Body>
           </Message>
         )} */}
-      </form>
       <style jsx>{styles}</style>
     </div>
   );

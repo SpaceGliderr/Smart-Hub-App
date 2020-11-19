@@ -18,27 +18,11 @@ const AddDevice = (props) => {
   const [content, setContent] = useState("");
   const [value, setValue] = useState("");
 
-  const { control } = useForm({
+  const { control, handleSubmit } = useForm({
     validationSchema: validation(),
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    fb.firestore().collection("Test").add({
-      title: title,
-      content: content,
-    });
-
-    setTitle("");
-    setContent("");
-
-    setNotification("Created Notification");
-
-    setTimeout(() => {
-      setNotification("");
-    }, 2000);
-  };
+  const onSubmit = (data) => {};
 
   return (
     <div>
@@ -51,7 +35,7 @@ const AddDevice = (props) => {
         <img className="center auto" src={logo} />
       </div>
       <p className="is-size-3 has-text-weight-medium Title">Add a Device</p>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Field>
           <Label className="has-text-weight-medium">Type</Label>
           <Control>
@@ -59,7 +43,7 @@ const AddDevice = (props) => {
               as={
                 <Select
                   value={value}
-                  className="custom-select"
+                  className="custom-select is-fullwidth"
                   size="medium"
                   fullWidth
                 >
@@ -71,7 +55,7 @@ const AddDevice = (props) => {
                 </Select>
               }
               control={control}
-              name="type of devices"
+              name="deviceType"
               size={size}
               placeholder="Model"
             />
@@ -85,19 +69,20 @@ const AddDevice = (props) => {
               as={
                 <Select
                   value={value}
-                  className="custom-select"
+                  className="custom-select is-fullwidth"
                   size="medium"
                   fullWidth
                 >
-                  <option value="Male">Google</option>
-                  <option value="Female">Samsung</option>
-                  <option value="Others">Amazon</option>
-                  <option value="Others">Nest</option>
-                  <option value="Others">Philips</option>
+                  <option value="Homiez">Homiez</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Amazon">Amazon</option>
+                  <option value="Nest">Nest</option>
+                  <option value="Google">Google</option>
+                  <option value="Philips">Philips</option>
                 </Select>
               }
               control={control}
-              name="type of devices"
+              name="deviceBrand"
               size={size}
               placeholder="Model"
             />
@@ -111,9 +96,8 @@ const AddDevice = (props) => {
               as={
                 <Select
                   value={value}
-                  className="custom-select"
+                  className="custom-select is-fullwidth"
                   size="medium"
-                  fullWidth
                 >
                   <option value="Male">Google Home Mini</option>
                   <option value="Female">Google Home Max</option>
@@ -121,14 +105,14 @@ const AddDevice = (props) => {
                 </Select>
               }
               control={control}
-              name="type of devices"
+              name="deviceSeries"
               size={size}
               placeholder="Model"
             />
           </Control>
         </Field>
 
-        <Button type="submit" color="primary" size={size} fullwidth>
+        <Button type="submit" color="primary" size={size} fullwidth disabled>
           Finish
         </Button>
       </form>

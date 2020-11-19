@@ -19,27 +19,11 @@ const AddRoutine = (props) => {
   const [content, setContent] = useState("");
   const [value, setValue] = useState("");
 
-  const { control } = useForm({
+  const { control, handleSubmit } = useForm({
     validationSchema: validation(),
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    fb.firestore().collection("Test").add({
-      title: title,
-      content: content,
-    });
-
-    setTitle("");
-    setContent("");
-
-    setNotification("Created Notification");
-
-    setTimeout(() => {
-      setNotification("");
-    }, 2000);
-  };
+  const onSubmit = (data) => {};
 
   return (
     <div className="homiez-add-room">
@@ -52,14 +36,14 @@ const AddRoutine = (props) => {
         <img className="center auto" src={logo} />
       </div>
       <p className="is-size-3 has-text-weight-medium title">Add a Routine</p>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Field>
           <Label className="has-text-weight-medium">Time On</Label>
           <Control>
             <Controller
               as={Input}
               control={control}
-              name="room name"
+              name="timerOn"
               size={size}
               placeholder="Set a time"
             />
@@ -72,7 +56,7 @@ const AddRoutine = (props) => {
             <Controller
               as={Input}
               control={control}
-              name="room name"
+              name="timerOff"
               size={size}
               placeholder="Set a time"
             />
@@ -88,7 +72,8 @@ const AddRoutine = (props) => {
 
         <Field>
           <Label className="has-text-weight-medium">
-            Which smart home device you would like to be added into this room?
+            Which smart home device you would like to be added into this
+            routine?
           </Label>
           <Control>
             <Controller
@@ -112,7 +97,7 @@ const AddRoutine = (props) => {
           </Control>
         </Field>
 
-        <Button type="submit" color="primary" size={size} fullwidth>
+        <Button type="submit" color="primary" size={size} fullwidth disabled>
           Finish
         </Button>
       </form>

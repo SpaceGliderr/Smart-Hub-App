@@ -49,7 +49,7 @@ const GetStarted = (props) => {
       </div>
       <Image className="center logo" src={Logo} />
       <Image className="center get-started" src={GetStartedImage} />
-      <a href="/on-boarding">
+      <a href="/sign-up">
         <Button
           className="get-started-button"
           // loading={submissionLoading}
