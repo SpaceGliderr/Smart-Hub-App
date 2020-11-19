@@ -14,7 +14,7 @@ import styles from "./styles";
 
 import validation from "./validation";
 
-const { Textarea, Field, Control, Input, Select, Label } = Form;
+const { Textarea, Field, Control } = Form;
 
 const Settings = (props) => {
   const { size } = props;
