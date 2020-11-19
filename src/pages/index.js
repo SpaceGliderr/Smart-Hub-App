@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import TestComponent from "../components/TestComponent";
-import { db } from "../config/firebase-config";
+import { db, rt } from "../config/firebase-config";
 import { getTestHook, getTestHooks } from "../api/queries/query";
 import mobile from "../../public/img/mobile.svg";
 
@@ -37,6 +37,12 @@ const Index = () => {
     //   })
     //   .catch((err) => {});
 
+    rt.ref("light-strips/06f40fa9-fc42-4086-85e9-d4a223000a79")
+      .once("value")
+      .then((snapshot) => {
+        console.log(snapshot.val().brightness);
+      });
+
     getTestHook(setBlogs);
   }, []);
 
@@ -62,6 +68,8 @@ const Index = () => {
         //   </Link>
         // </li>
       )}
+
+      <h1>Ambient Light Controller</h1>
     </div>
   );
 };

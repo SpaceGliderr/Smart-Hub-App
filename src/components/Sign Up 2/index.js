@@ -6,13 +6,15 @@ import { Form, Button, Message } from "react-bulma-components";
 import { useForm, Controller, ErrorMessage } from "react-hook-form";
 import DatePicker from "react-date-picker/dist/entry.nostyle";
 import styles from "./styles";
-
+import { createAdditionalAccountDetails } from "../../api/queries/query";
+import { useRouter } from "next/router";
 import validation from "./validation";
 
 const { Field, Control, Input, Select, Label } = Form;
 
 const SignUp2 = (props) => {
   const { size } = props;
+  const router = useRouter();
 
   const currentDate = new Date();
   const [value, setValue] = useState("");
@@ -21,27 +23,16 @@ const SignUp2 = (props) => {
   const [content, setContent] = useState("");
   const [notification, setNotification] = useState("");
 
-  const { control } = useForm({
+  const { control, handleSubmit } = useForm({
     validationSchema: validation(),
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    fb.firestore().collection("Test").add({
-      title: title,
-      content: content,
-    });
-
-    setTitle("");
-    setContent("");
-
-    setNotification("Created Notification");
-
-    setTimeout(() => {
-      setNotification("");
-    }, 2000);
+  const onSubmit = (data) => {
+    console.log(data);
+    createAdditionalAccountDetails(data);
+    router.push("/on-boarding");
   };
+
   return (
     <div className="homiez-signup-2">
       <p className="is-size-3 has-text-weight-medium">
@@ -58,7 +49,7 @@ const SignUp2 = (props) => {
       <div className="is-fullwdith has-text-link has-text-right">
         <a> Skip Account Setup</a>
       </div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Field>
             <Label className="has-text-weight-medium">Gender</Label>
@@ -70,17 +61,6 @@ const SignUp2 = (props) => {
                     className="custom-select"
                     size="medium"
                     fullWidth
-                    onChange={(e) => {
-                      const gender = e.target.value;
-                      setValue(gender);
-                      if (gender === "Male") {
-                        setGender(Male);
-                      } else if (gender === "Female") {
-                        setGender(Female);
-                      } else {
-                        setGender(Others);
-                      }
-                    }}
                   >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -104,7 +84,7 @@ const SignUp2 = (props) => {
               <Controller
                 as={<DatePicker value={value} activeStartDate={currentDate} />}
                 control={control}
-                name="dateOfBirth"
+                name="dob"
                 size={size}
                 placeholder="Last Name"
               />
@@ -123,7 +103,7 @@ const SignUp2 = (props) => {
             <Controller
               as={Input}
               control={control}
-              name="amount"
+              name="roomAmount"
               size={size}
               placeholder="Enter amount"
             />
@@ -141,8 +121,7 @@ const SignUp2 = (props) => {
             <Controller
               as={Input}
               control={control}
-              name="password"
-              type="password"
+              name="deviceAmount"
               size={size}
               placeholder="Enter amount"
             />

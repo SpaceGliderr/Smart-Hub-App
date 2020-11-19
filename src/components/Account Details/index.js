@@ -152,7 +152,7 @@ const AccountDetails = (props) => {
         size={size}
         fullwidth
       >
-        Edit
+        Update
       </Button>
       <style jsx>{styles}</style>
     </div>

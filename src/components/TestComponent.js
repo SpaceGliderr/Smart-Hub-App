@@ -1,20 +1,29 @@
 import React, { useState } from "react";
-import { fb } from "../config/firebase-config";
+import { fb, rt } from "../config/firebase-config";
 
 const TestComponent = () => {
   const [title, setTitle] = useState("");
+  const [mode, setMode] = useState("");
   const [content, setContent] = useState("");
   const [notification, setNotification] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fb.firestore().collection("Test").add({
-      title: title,
-      content: content,
-    });
+    // fb.firestore().collection("Test").add({
+    //   title: title,
+    //   content: content,
+    // });
+
+    rt.ref("light-strips")
+      .child("06f40fa9-fc42-4086-85e9-d4a223000a79")
+      .update({
+        brightness: parseInt(title),
+        lightMode: parseInt(mode),
+      });
 
     setTitle("");
+    setMode("");
     setContent("");
 
     setNotification("Created Notification");
@@ -32,9 +41,14 @@ const TestComponent = () => {
           Testing Title
           <br />
           <input
-            type="text"
+            type="number"
             value={title}
             onChange={({ target }) => setTitle(target.value)}
+          />
+          <input
+            type="number"
+            value={mode}
+            onChange={({ target }) => setMode(target.value)}
           />
         </div>
         <div>
