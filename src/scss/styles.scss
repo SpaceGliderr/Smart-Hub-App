@@ -1,7 +1,10 @@
 @import "bulma/bulma";
+@import "~@creativebulma/bulma-divider";
+@import "react-date-picker/dist/DatePicker";
+@import "react-fab/dist/main.scss";
 
 html,
 body {
   padding: 0;
-  margin: 0;
+  margin: 0 0.75rem;
 }
