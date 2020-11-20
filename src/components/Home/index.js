@@ -139,7 +139,7 @@ const Home = () => {
       id: "3",
       title: "Scenes",
       img: scenesIcon,
-      href: "/",
+      href: "/add-scene",
     },
     {
       id: "4",
