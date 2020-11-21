@@ -27,8 +27,51 @@ export default css.global`
     box-shadow: 2px 3px 2px 2px #f0f0f0;
     margin-bottom: 1em;
   }
-  .menu-label:not(:last-child) {
-    margin-bottom: 0;
+  .welcome-column {
+    position: relative;
+    width: 100%;
+    margin-right: 2px;
+    padding: 5px;
+    margin-top: 5px;
+    height: 108px;
+    border: 2px solid #dddddd;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: white;
+    background-image: url(./img/gradient.svg);
+  }
+  .welcome-home {
+    margin-left: -0.4em;
+    margin-top: 0.1em;
+  }
+  @media screen and (min-width: 501px) {
+    .welcome-column {
+      color: black;
+      background-image: none;
+    }
+  }
+  .username {
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    margin-right: -100%;
+    transform: translate(-50%, -50%);
+  }
+  .scene-column {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .scenes {
+    width: 53px;
+    height: 53px;
+    background: #f7fff7;
+    border-radius: 100px;
+    margin-bottom 2em;
+    margin-right: 1.5em;
+  }
+  .number {
+    height 100%;
   }
   .is-absolute {
     position: absolute;
@@ -59,9 +102,6 @@ export default css.global`
     margin-left: auto;
     margin-right: auto;
   }
-  .center {
-    display: block;
-  }
   .right {
     right: 1.8em;
   }
@@ -73,9 +113,6 @@ export default css.global`
   }
   .places {
     padding: 10px;
-    left: 17px;
-    right: 17px;
-    top: 199px;
     border-radius: 10px;
     margin-bottom: 10px;
   }
@@ -87,9 +124,6 @@ export default css.global`
   }
   .living-room-content {
     background: #fff9e9;
-  }
-  .kitchen-content {
-    background: #fcffec;
   }
   .none-backgound {
     border: none;
@@ -112,12 +146,34 @@ export default css.global`
     margin-right: 10px;
     max-height: 46px;
   }
+  .room {
+    width: 154px;
+    height: 94px;
+    left: 27px;
+    top: 533px;
+    background: #ddffff;
+    border: 2px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+  .room-section {
+    width: 100%;
+  }
+  .room-image {
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+  }
   .right-switch {
     right: 2.8em;
     margin-top: 0.8em;
   }
   .area {
     background: #fbe5c4;
+  }
+  .room-area {
+    background: #63E2DA;
   }
   .kitchen {
     background: #fbfca4;
