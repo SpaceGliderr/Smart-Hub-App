@@ -58,8 +58,6 @@ export default css.global`
     transform: translate(-50%, -50%);
   }
   .scene-column {
-    left: 0;
-    right: 0;
     width: 100%;
   }
   .scenes {
@@ -68,7 +66,7 @@ export default css.global`
     background: #f7fff7;
     border-radius: 100px;
     margin-bottom 2em;
-    margin-right: 1.5em;
+    margin-right: 0.7em;
   }
   .number {
     height 100%;
@@ -155,9 +153,6 @@ export default css.global`
     border: 2px solid #DDDDDD;
     box-sizing: border-box;
     border-radius: 10px;
-  }
-  .room-section {
-    width: 100%;
   }
   .room-image {
     margin-bottom: 10px;

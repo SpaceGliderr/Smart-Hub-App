@@ -421,7 +421,7 @@ const Home = () => {
 
         <Columns fullwidth="true">
           <Columns.Column>
-            <Columns.Column className="is-inline-flex scene-column">
+            <Columns.Column className="is-inline-flex scene-column flex-horizontal-center">
               {map(scene, (section, index) => {
                 return (
                   <div className="scenes" index={index} key={section.id}>
@@ -443,13 +443,13 @@ const Home = () => {
           </button>
         </div>
 
-        <Columns fullwidth="true">
+        <Columns fullwidth="true" className="flex-vertical-center">
           <Columns.Column className="is-inline-flex">
             <div>
               {map(rooms, (section, index) => {
                 return (
                   <Columns.Column
-                    className="room proceed-button room-area-content is-inline-flex"
+                    className="room proceed-button room-area-content"
                     index={index}
                     onClick={() => setActive(!active)}
                   >
@@ -473,7 +473,7 @@ const Home = () => {
               {map(rooms, (section, index) => {
                 return (
                   <Columns.Column
-                    className="room proceed-button room-area-content is-inline-flex"
+                    className="room proceed-button room-area-content"
                     index={index}
                     onClick={() => setActive(!active)}
                   >
