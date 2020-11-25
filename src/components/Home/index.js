@@ -8,6 +8,7 @@ import logoHorizontal from "../../../public/img/logo-horizontal.svg";
 import menu from "../../../public/img/menu-button.svg";
 import proceed from "../../../public/img/proceed-button.svg";
 import userProfile from "../../../public/img/visit-profile-arrow.svg";
+import welcomeHome from "../../../public/img/welcome-home.svg";
 import roomIcon from "../../../public/img/room-icon.svg";
 import devicesIcon from "../../../public/img/devices-icon.svg";
 import scenesIcon from "../../../public/img/scenes-icon.svg";
@@ -44,30 +45,35 @@ const Home = () => {
   const [active, setActive] = useState(false);
   const [modal, setModal] = useState(false);
   // ======================= EVENTS
-  const smartDevice = [
+  const allDevice = [
     {
       img: smartDevice1,
       imgActive: smartDevice1On,
       title: "Living Room",
+      option: "On",
+      optionNegative: "Off",
     },
     {
       img: smartDevice2,
       imgActive: smartDevice2On,
       title: "Room 1",
+      option: "On",
+      optionNegative: "Off",
     },
     {
       img: smartDevice2,
       imgActive: smartDevice2On,
       title: "Kitchen",
+      option: "On",
+      optionNegative: "Off",
     },
     {
       img: smartDevice3,
       imgActive: smartDevice3On,
       title: "Study Room",
+      option: "On",
+      optionNegative: "Off",
     },
-  ];
-
-  const room = [
     {
       img: lights,
       imgActive: lightsOn,
@@ -110,9 +116,6 @@ const Home = () => {
       option: "Up",
       optionNegative: "Down",
     },
-  ];
-
-  const kitchenDevice = [
     {
       img: refridgerator,
       imgActive: refridgeratorOn,
@@ -139,19 +142,19 @@ const Home = () => {
       id: "3",
       title: "Scenes",
       img: scenesIcon,
-      href: "/",
+      href: "/add-scene",
     },
     {
       id: "4",
       title: "Routines",
       img: routinesIcon,
-      href: "/",
+      href: "/add-routine",
     },
     {
       id: "5",
       title: "Members",
       img: membersIcon,
-      href: "/members",
+      href: "/add-member",
     },
   ];
 
@@ -185,6 +188,46 @@ const Home = () => {
       title: "Members",
       img: membersIcon,
       href: "/members",
+    },
+  ];
+
+  const scene = [
+    {
+      id: "1",
+      number: "1",
+      scene: "Night",
+    },
+    {
+      id: "2",
+      number: "2",
+      scene: "Study",
+    },
+    {
+      id: "3",
+      number: "3",
+      scene: "Sleep",
+    },
+    {
+      id: "4",
+      number: "4",
+      scene: "Power Saving",
+    },
+  ];
+
+  const rooms = [
+    {
+      img: smartDevice1,
+      imgActive: smartDevice1On,
+      title: "Living Room",
+      option: "On",
+      optionNegative: "Off",
+    },
+    {
+      img: smartDevice2,
+      imgActive: smartDevice2On,
+      title: "Room 1",
+      option: "On",
+      optionNegative: "Off",
     },
   ];
 
@@ -328,11 +371,8 @@ const Home = () => {
         >
           <img className="image is-24x24" src={menu} />
         </Button>
-        <img className="center auto" src={logo} />
+        <img className="auto" src={logo} />
       </div>
-      {/* <div className="is-size-5 right auto is-absolute">
-        <p>29°C/Subang Jaya</p>
-      </div> */}
       <div className="is-size-5 title">
         <Button className="floating-add-button is-paddingless right">
           <Fab>
@@ -357,15 +397,23 @@ const Home = () => {
             </FabActions>
           </Fab>
         </Button>
-
-        <p className="is-size-4 greetings has-tet-weight-bold">Good Evening,</p>
-        {/* will change to actual greetings based on the time once firebase is linked */}
-        <p className="name is-size-3 name">Name</p>
-        {/* will change to actual name based on the user login username once firebase is linked */}
       </div>
+      <Columns fullwidth="true">
+        <Columns.Column>
+          <Columns.Column className="welcome-column">
+            <div className="welcome-home">
+              <img src={welcomeHome} />
+            </div>
+            <div className="username is-absolute">
+              <p className="is-size-4">Cheong Keng Son</p>
+            </div>
+          </Columns.Column>
+        </Columns.Column>
+      </Columns>
+
       <div className="places smart-devices">
         <div className="is-inline-flex">
-          <p className="has-text-dark">Smart Devices</p>
+          <p className="has-text-dark">Scenes</p>
           <button className="proceed-button none-backgound">
             <img className="is-16x16" src={proceed} />
           </button>
@@ -373,54 +421,85 @@ const Home = () => {
 
         <Columns fullwidth="true">
           <Columns.Column>
-            {map(smartDevice, (section, index) => {
-              return (
-                <Columns.Column
-                  className="devices smart-device-content"
-                  index={index}
-                  key={index}
-                >
-                  <div className="is-inline-flex">
-                    {active ? (
-                      <img className="image" src={section.imgActive} />
-                    ) : (
-                      <img className="image" src={section.img} />
-                    )}
-                    <div className="caption">
-                      <p className="is-size-6 has-text-dark">{section.title}</p>
-                      {active ? (
-                        <p className="has-text-success is-size-7">On</p>
-                      ) : (
-                        <p className="has-text-grey-light is-size-7">Off</p>
-                      )}
-                    </div>
-                    <div className="right-switch auto is-absolute">
-                      <Switch
-                        checked={active}
-                        onChange={() => setActive(!active)}
-                        onColor="#00D1B2"
-                        onHandleColor="#ffffff"
-                        handleDiameter={12}
-                        uncheckedIcon={true}
-                        checkedIcon={true}
-                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                        activeBoxShadow="0px 0px 1px 0px rgba(0, 0, 0, 0.2)"
-                        height={20}
-                        width={34}
-                        className="react-switch"
-                        id="material-switch"
-                      />
-                    </div>
+            <Columns.Column className="is-inline-flex scene-column flex-horizontal-center">
+              {map(scene, (section, index) => {
+                return (
+                  <div className="scenes" index={index} key={section.id}>
+                    <p className="number">{section.number}</p>
+                    <p className="has-text-centered">{section.scene}</p>
                   </div>
-                </Columns.Column>
-              );
-            })}
+                );
+              })}
+            </Columns.Column>
           </Columns.Column>
         </Columns>
       </div>
+
+      <div className="places room-area">
+        <div className="is-inline-flex">
+          <p className="has-text-dark">Rooms</p>
+          <button className="proceed-button none-backgound">
+            <img className="is-16x16" src={proceed} />
+          </button>
+        </div>
+
+        <Columns fullwidth="true" className="flex-vertical-center">
+          <Columns.Column className="is-inline-flex">
+            <div>
+              {map(rooms, (section, index) => {
+                return (
+                  <Columns.Column
+                    className="room proceed-button room-area-content"
+                    index={index}
+                    onClick={() => setActive(!active)}
+                  >
+                    <div className="room-section">
+                      {active ? (
+                        <img className="room-image" src={section.imgActive} />
+                      ) : (
+                        <img className="room-image" src={section.img} />
+                      )}
+                      <div className="caption">
+                        <p className="is-size-6 has-text-dark has-text-centered">
+                          {section.title}
+                        </p>
+                      </div>
+                    </div>
+                  </Columns.Column>
+                );
+              })}
+            </div>
+            <div>
+              {map(rooms, (section, index) => {
+                return (
+                  <Columns.Column
+                    className="room proceed-button room-area-content"
+                    index={index}
+                    onClick={() => setActive(!active)}
+                  >
+                    <div className="room-section">
+                      {active ? (
+                        <img className="room-image" src={section.imgActive} />
+                      ) : (
+                        <img className="room-image" src={section.img} />
+                      )}
+                      <div className="caption">
+                        <p className="is-size-6 has-text-dark has-text-centered">
+                          {section.title}
+                        </p>
+                      </div>
+                    </div>
+                  </Columns.Column>
+                );
+              })}
+            </div>
+          </Columns.Column>
+        </Columns>
+      </div>
+
       <div className="places area">
         <div className="is-inline-flex">
-          <p className="has-text-dark">Living Room</p>
+          <p className="has-text-dark">All Device</p>
           <button className="proceed-button none-backgound">
             <img className="is-16x16" src={proceed} />
           </button>
@@ -428,7 +507,7 @@ const Home = () => {
 
         <Columns fullwidth="true">
           <Columns.Column>
-            {map(room, (section, index) => {
+            {map(allDevice, (section, index) => {
               return (
                 <Columns.Column
                   className="devices living-room-content"
@@ -458,61 +537,6 @@ const Home = () => {
                         checked={active}
                         onChange={() => setActive(!active)}
                         onColor="#ffb404"
-                        onHandleColor="#ffffff"
-                        handleDiameter={12}
-                        uncheckedIcon={true}
-                        checkedIcon={true}
-                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                        activeBoxShadow="0px 0px 1px 0px rgba(0, 0, 0, 0.2)"
-                        height={20}
-                        width={34}
-                        className="react-switch"
-                        id="material-switch"
-                      />
-                    </div>
-                  </div>
-                </Columns.Column>
-              );
-            })}
-          </Columns.Column>
-        </Columns>
-      </div>
-      <div className="places kitchen">
-        <div className="is-inline-flex">
-          <p className="has-text-dark">Kitchen</p>
-          <button className="proceed-button none-backgound">
-            <img className="is-16x16" src={proceed} />
-          </button>
-        </div>
-
-        <Columns fullwidth="true">
-          <Columns.Column>
-            {map(kitchenDevice, (section, index) => {
-              return (
-                <Columns.Column
-                  className="devices kitchen-content"
-                  index={index}
-                  key={index}
-                >
-                  <div className="is-inline-flex">
-                    {active ? (
-                      <img className="image" src={section.imgActive} />
-                    ) : (
-                      <img className="image" src={section.img} />
-                    )}
-                    <div className="caption">
-                      <p className="is-size-6 has-text-dark">{section.title}</p>
-                      {active ? (
-                        <p className="has-text-success is-size-7">On</p>
-                      ) : (
-                        <p className="has-text-grey-light is-size-7">Off</p>
-                      )}
-                    </div>
-                    <div className="right-switch is-absolute">
-                      <Switch
-                        checked={active}
-                        onChange={() => setActive(!active)}
-                        onColor="#e7e300"
                         onHandleColor="#ffffff"
                         handleDiameter={12}
                         uncheckedIcon={true}

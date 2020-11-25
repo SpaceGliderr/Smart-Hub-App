@@ -2,8 +2,8 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { fb } from "../../config/firebase-config";
-import { Form, Button, Message, Modal } from "react-bulma-components";
-import { useForm, ErrorMessage } from "react-hook-form";
+import { Form, Button, Modal } from "react-bulma-components";
+import { useForm, Controller } from "react-hook-form";
 import Switch from "react-switch";
 import ReactStars from "react-rating-stars-component";
 import back from "../../../public/img/back-arrow1.svg";
@@ -14,7 +14,7 @@ import styles from "./styles";
 
 import validation from "./validation";
 
-const { Textarea } = Form;
+const { Textarea, Field, Control } = Form;
 
 const Settings = (props) => {
   const { size } = props;
@@ -232,7 +232,6 @@ const Settings = (props) => {
             </li>
           </ul>
         </aside>
-
         <Modal
           className="collection-form"
           show={showModal}
@@ -255,10 +254,22 @@ const Settings = (props) => {
                   activeColor="#ffd700"
                 />
               </div>
-              <Textarea
-                className="textarea field"
-                placeholder="Have any comments? Leave them here!"
-              />
+              <Field>
+                <Control>
+                  <Controller
+                    control={control}
+                    as={
+                      <Textarea
+                        className="textarea"
+                        placeholder="Have any comments? Leave them here!"
+                      />
+                    }
+                    name="roomName"
+                    className="is-fullwidth"
+                    placeholder="Enter room name"
+                  />
+                </Control>
+              </Field>
               <div className="is-inline-flex">
                 <Button
                   className="button is-light"
